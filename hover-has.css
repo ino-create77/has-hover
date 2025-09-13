@@ -1,0 +1,58 @@
+@charset "utf-8";
+
+/* リセットCSS */
+:where(body, ul, li, figure) {
+  margin: initial;
+  padding: initial;
+}
+li {
+  list-style: none;
+}
+/* ここからスタイルのためCSS */
+.container {
+  display: flex;
+  align-items : center;
+  gap: 1rem;
+  max-width: 900px;
+  width: 100%;
+  margin-inline: auto;
+}
+.image-box__item {
+  aspect-ratio: 4/3;
+  width: 300px;
+  max-width: 100%;
+}
+.image-box__item img {
+  object-fit: cover;
+  height: 100%;
+  width: 100%;
+}
+.text-list {
+  display: grid;
+  gap: 1rem;
+}
+.text-list__item {
+  transition: 0.3s;
+}
+.text-list__item:hover {
+  cursor: pointer;
+  opacity: 0.6;
+}
+/* 最初は1番目の画像以外非表示 */
+.image-box__item:not(:first-child) {
+  display: none;
+}
+/* 課題2デザインカンプがホバーされたら2番目の画像を表示、1番目の画像は非表示 */
+.image-box:has(+.text-list .text-list__item:nth-child(2):hover) .image-box__item:nth-child(2){
+  display :block;
+}
+.image-box:has(+.text-list .text-list__item:nth-child(2):hover) .image-box__item:first-child{
+  display :none;
+}
+/* 課題3デザインカンプがホバーされたら3番目の画像を表示、1番目の画像は非表示 */
+.image-box:has(+.text-list .text-list__item:nth-child(3):hover) .image-box__item:nth-child(3){
+  display :block;
+}
+.image-box:has(+.text-list .text-list__item:nth-child(3):hover) .image-box__item:first-child{
+  display :none;
+}
